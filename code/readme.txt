@@ -1,6 +1,6 @@
-
+ï»¿
 haiku_man	[-d]
 
-ƒIƒvƒVƒ‡ƒ“
-	-d	ƒfƒoƒbƒOƒ‚[ƒh
-		ƒfƒoƒbƒO—p‚Ìî•ñ‚ð•\Ž¦‚·‚éB
+ã‚ªãƒ—ã‚·ãƒ§ãƒ³
+	-d	ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰
+		ãƒ‡ãƒãƒƒã‚°ç”¨ã®æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
