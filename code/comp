@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "Compile senryu_man"
+./compile senryu_man

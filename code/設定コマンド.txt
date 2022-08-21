@@ -1,0 +1,5 @@
+■ コマンドプロンプトから、以下のコマンドを実行して環境設定
+
+bash
+mount_uvw
+cd /mnt/v/DATA/Concept_Art/0010_川柳ジェネレータ（仮）/code
