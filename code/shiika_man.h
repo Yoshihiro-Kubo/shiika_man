@@ -1,5 +1,5 @@
-#ifndef _SENRYU_MAN_H_
-#define	_SENRYU_MAN_H_
+#ifndef _SHIIKA_MAN_H_
+#define	_SHIIKA_MAN_H_
 
 #include	"moji.h"
 
@@ -7,11 +7,11 @@
 #define	NUM_OF_CHAR	31
 #define	BUFFER_SIZE	2048
 
-#define	SENRYU_MODE_EXIT	0
-#define	SENRYU_MODE_S2N	1
-#define	SENRYU_MODE_N2S	2
-#define	SENRYU_MODE_HELP	3
-#define	SENRYU_MODE_MAX	4
+#define	SHIIKA_MODE_EXIT	0
+#define	SHIIKA_MODE_S2N	1
+#define	SHIIKA_MODE_N2S	2
+#define	SHIIKA_MODE_HELP	3
+#define	SHIIKA_MODE_MAX	4
 
 // 文法チェック
 #define	GRM_OK				 0
@@ -47,5 +47,4 @@ char	*num_unit[]	= {
 bool	debug_mode = false;
 
 
-
-#endif	// _SENRYU_MAN_H_
+#endif	// _SHIIKA_MAN_H_

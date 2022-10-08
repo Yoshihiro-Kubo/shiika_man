@@ -14,21 +14,21 @@
 
 char	input_buffer[ BUFFER_SIZE ];	// 入力バッファ
 char	str_buffer[ BUFFER_SIZE ];		// 表示用文字バッファ
-int		ku[ NUM_OF_CHAR ];				// 句の配列
+int		ka[ NUM_OF_CHAR ];				// 歌の配列
 
 int senryu_start_menu( void ){
 	int		input_num;
 
 	do{
-		printf( "■ 川柳・俳句ジェネレータ\n" );
-		printf( "\t%d : 通し番号検索（文字列を入力して番号を検索）\n", SENRYU_MODE_S2N  );
-		printf( "\t%d : 文字列　検索（番号を入力して文字列を検索）\n", SENRYU_MODE_N2S  );
-		printf( "\t%d : 使い方説明\n"                                , SENRYU_MODE_HELP );
-		printf( "\t%d : 終了\n"                                      , SENRYU_MODE_EXIT );
+		printf( "■ 詩歌マネージャ\n" );
+		printf( "\t%d : 通し番号検索（文字列を入力して番号を検索）\n", SHIIKA_MODE_S2N  );
+		printf( "\t%d : 文字列　検索（番号を入力して文字列を検索）\n", SHIIKA_MODE_N2S  );
+		printf( "\t%d : 使い方説明\n"                                , SHIIKA_MODE_HELP );
+		printf( "\t%d : 終了\n"                                      , SHIIKA_MODE_EXIT );
 		fgets( input_buffer, BUFFER_SIZE, stdin );
 		input_num = atoi( input_buffer );
 		if( debug_mode ){ printf( "入力番号：%d\n", input_num ); }								///DBG
-	} while( ( input_num < SENRYU_MODE_EXIT ) || ( SENRYU_MODE_MAX <= input_num ) );
+	} while( ( input_num < SHIIKA_MODE_EXIT ) || ( SHIIKA_MODE_MAX <= input_num ) );
 	return input_num;
 }
 
@@ -40,7 +40,7 @@ int senryu_end_menu( void ){
 		return atoi( input_buffer );
 }
 
-int grammar_check( int ku[] ){
+int grammar_check( int ka[] ){
 	// 文法チェック
 	//	文法チェックを行う
 	// リターン値
@@ -53,20 +53,20 @@ int grammar_check( int ku[] ){
 	bool	pre_sokuon;
 
 	if( debug_mode ){ gmp_printf( "文法チェックd\n" ); }										///DBG
-	if( strcmp( moji[ku[0]], "ん" ) == 0 ){
+	if( strcmp( moji[ka[0]], "ん" ) == 0 ){
 		printf( "文法エラー：撥音「ん」で始まっています。\n" );
 		return GRM_HATSUON_TOP;
 	}
-	if( strcmp( moji[ku[0]], "っ" ) == 0 ){
+	if( strcmp( moji[ka[0]], "っ" ) == 0 ){
 		printf( "文法エラー：促音「っ」で始まっています。\n" );
 		return GRM_SOKUON_TOP;
 	}
-	if( debug_mode ){ gmp_printf( "%2d %s\n", 0, moji[ku[0]] ); }								///DBG
+	if( debug_mode ){ gmp_printf( "%2d %s\n", 0, moji[ka[0]] ); }								///DBG
 
 	pre_sokuon = false;
 	for( i=1; i<NUM_OF_CHAR; i++ ){
-		if( debug_mode ){ gmp_printf( "%2d %s\n", i, moji[ku[i]] ); }							///DBG
-		if( strcmp( moji[ku[i]], "っ" ) == 0 ){
+		if( debug_mode ){ gmp_printf( "%2d %s\n", i, moji[ka[i]] ); }							///DBG
+		if( strcmp( moji[ka[i]], "っ" ) == 0 ){
 			if( pre_sokuon ){
 				printf( "文法エラー：促音「っ」が続いています。\n" );
 				return GRM_SOCUON_CONTINUE;
@@ -131,7 +131,7 @@ int senryu_str_to_num_f( void ){
 	// 文字列入力
 	// エラーチェック
 	// 文字列→番号変換
-	// 		文字に分解、句の配列に格納
+	// 		文字に分解、歌の配列に格納
 	// 		番号の計算
 	// 表示
 	// 継続・終了メニュー
@@ -145,7 +145,7 @@ int senryu_str_to_num_f( void ){
 	printf( "【通し番号検索】\n");
 	do{
 		// 入力
-		printf( "句を入力してください\n" );
+		printf( "歌・句を入力してください\n" );
 		fgets( input_buffer, BUFFER_SIZE, stdin );
 		if( debug_mode ){ printf( "入力文字列：「%s」\n", input_buffer ); }						///DBG
 
@@ -155,7 +155,7 @@ int senryu_str_to_num_f( void ){
 			if( *p == '\n' ){
 				printf( "Warning : 文字が短すぎます（字足らずで処理します）\n" );
 				for( j=i; j<NUM_OF_CHAR; j++ ){
-					ku[j] = 0;
+					ka[j] = 0;
 				}
 				break;
 			}
@@ -166,7 +166,7 @@ int senryu_str_to_num_f( void ){
 //				if( debug_mode ){ printf( "len : %d, ", len ); }							///DBG
 //				if( debug_mode ){ printf( "p :「%s」\n", p ); }								///DBG
 				if( strncmp( moji[j], p, len ) == 0 ){
-					ku[i] = j;
+					ka[i] = j;
 					p += len;
 					if( debug_mode ){ printf( "残り : %s, *p : 0x%02X\n", p, *p ); }				///DBG
 					hit = true;
@@ -183,21 +183,21 @@ int senryu_str_to_num_f( void ){
 		}
 
 		// 文法チェック
-		grammar_check( ku );
+		grammar_check( ka );
 
 		if( debug_mode ){													///DBG
 			for( i=0; i<NUM_OF_CHAR; i++ ){									///DBG
-				printf( "%d\t%s\n", ku[i], moji[ku[i]] );					///DBG
+				printf( "%d\t%s\n", ka[i], moji[ka[i]] );					///DBG
 			}																///DBG
 		}																	///DBG
 
 		// 通し番号計算
 		mpz_t	mp_number;
 		mpz_t	mp_n_size;
-		mpz_t	mp_ku;
+		mpz_t	mp_ka;
 
 		mpz_init( mp_number );					// mp_number = 0;
-		mpz_init( mp_ku );
+		mpz_init( mp_ka );
 		mpz_init( mp_n_size );
 		mpz_set_si( mp_n_size, n_size );
 		if( debug_mode ){ gmp_printf( "mp_n_size : %Zd\n",  mp_n_size ); }											///DBG
@@ -205,10 +205,10 @@ int senryu_str_to_num_f( void ){
 		for( i=NUM_OF_CHAR-1; i>=0; i-- ){
 //		for( i=0; i<NUM_OF_CHAR; i++ ){
 			if( debug_mode ){ gmp_printf( "pre  mp_number : %Zd,  mp_n_size : %Zd\n", mp_number, mp_n_size ); }		///DBG
-			mpz_set_si( mp_ku, ku[i] );
+			mpz_set_si( mp_ka, ka[i] );
 			mpz_mul( mp_number, mp_number, mp_n_size );
-			if( debug_mode ){ gmp_printf( "mid  mp_number : %Zd,  mp_ku : %Zd\n", mp_number, mp_ku ); }				///DBG
-			mpz_add( mp_number, mp_number, mp_ku );
+			if( debug_mode ){ gmp_printf( "mid  mp_number : %Zd,  mp_ka : %Zd\n", mp_number, mp_ka ); }				///DBG
+			mpz_add( mp_number, mp_number, mp_ka );
 			if( debug_mode ){ gmp_printf( "post mp_number : %Zd\n", mp_number ); }									///DBG
 		}
 
@@ -216,7 +216,7 @@ int senryu_str_to_num_f( void ){
 		printf( "\n" );
 		printf( "入力文字列：" );
 		for( i=0; i<NUM_OF_CHAR; i++ ){
-			printf( "%s", moji[ ku[ i ] ] );
+			printf( "%s", moji[ ka[ i ] ] );
 		}
 		printf( "\n" );
 		mpz_get_str( input_buffer, 10, mp_number );
@@ -227,7 +227,7 @@ int senryu_str_to_num_f( void ){
 
 		// 解放
 		mpz_clear( mp_number );
-		mpz_clear( mp_ku );
+		mpz_clear( mp_ka );
 		mpz_clear( mp_n_size );
 
 		// 継続・終了メニュー
@@ -261,12 +261,12 @@ int senryu_num_to_str_f( void ){
 		mpz_t	mp_number_bak;
 		mpz_t	mp_number_max;
 		mpz_t	mp_n_size;
-		mpz_t	mp_ku;
+		mpz_t	mp_ka;
 
 		mpz_init( mp_number );
 		mpz_init( mp_number_bak );
 		mpz_init( mp_n_size );
-		mpz_init( mp_ku );
+		mpz_init( mp_ka );
 		mpz_set_si( mp_n_size, n_size );
 		mpz_ui_pow_ui( mp_number_max, n_size, NUM_OF_CHAR);
 		if( mpz_set_str( mp_number, input_buffer, 10) <0 ){
@@ -287,16 +287,16 @@ int senryu_num_to_str_f( void ){
 		// 各文字の決定
 		str_is_short = false;
 		for( i=0; i<NUM_OF_CHAR; i++ ){
-			mpz_mod( mp_ku, mp_number, mp_n_size );
+			mpz_mod( mp_ka, mp_number, mp_n_size );
 			mpz_tdiv_q( mp_number, mp_number, mp_n_size );
-			ku[i] = mpz_get_ui( mp_ku );
-			if( debug_mode ){ gmp_printf( "post mp_number : %3Zd, mp_ku : %Zd, moji[ku[mp_ku]] : %s\n",				///DBG
-																	mp_ku, mp_number, moji[ku[i]] ); }				///DBG
-			if( ( mpz_get_ui( mp_number ) == 0 ) && ( ku[i] == 0 ) ){
+			ka[i] = mpz_get_ui( mp_ka );
+			if( debug_mode ){ gmp_printf( "post mp_number : %3Zd, mp_ka : %Zd, moji[ka[mp_ka]] : %s\n",				///DBG
+																	mp_ka, mp_number, moji[ka[i]] ); }				///DBG
+			if( ( mpz_get_ui( mp_number ) == 0 ) && ( ka[i] == 0 ) ){
 				str_is_short = true;
 //				printf( "Warning : 文字が短すぎます\n" );
 				for( j=i+1; j<NUM_OF_CHAR; j++ ){
-					ku[j] = 0;
+					ka[j] = 0;
 				}
 				break;
 			}
@@ -311,7 +311,7 @@ int senryu_num_to_str_f( void ){
 		printf( "　　　　　：%s\n", str_buffer );
 		printf( "文字列　　：" );
 		for( i=0; i<NUM_OF_CHAR; i++ ){
-			printf( "%s", moji[ ku[ i ] ] );
+			printf( "%s", moji[ ka[ i ] ] );
 		}
 		printf( "\n" );
 
@@ -320,11 +320,11 @@ int senryu_num_to_str_f( void ){
 			printf( "Warning : 文字が短すぎます\n" );
 		}
 		// 文法チェック
-		grammar_check( ku );
+		grammar_check( ka );
 
 		// 解放
 		mpz_clear( mp_number );
-		mpz_clear( mp_ku );
+		mpz_clear( mp_ka );
 		mpz_clear( mp_n_size );
 
 		// 継続・終了メニュー
@@ -363,21 +363,21 @@ int main( int argc, char*argv[] ){
 	do{
 		mode = senryu_start_menu();
 		switch( mode ){
-		case SENRYU_MODE_S2N:
+		case SHIIKA_MODE_S2N:
 			senryu_str_to_num_f();
 			break;
-		case SENRYU_MODE_N2S:
+		case SHIIKA_MODE_N2S:
 			senryu_num_to_str_f();
 			break;
-		case SENRYU_MODE_HELP:
+		case SHIIKA_MODE_HELP:
 			senryu_help_f();
 			break;
-		case SENRYU_MODE_EXIT:
+		case SHIIKA_MODE_EXIT:
 			break;
 		default:
 			break;
 		}
-	}while( mode != SENRYU_MODE_EXIT );
+	}while( mode != SHIIKA_MODE_EXIT );
 	printf( "さようなら\n");
 	return 0;
 }
