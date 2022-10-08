@@ -259,7 +259,7 @@ int shiika_num_to_str_f( void ){
 
 	int			input_num;
 	u_int32_t	i, j;
-	bool		str_is_short;
+	char	*output_mes;
 
 	printf( "【文字列検索】\n");
 	do{
@@ -296,7 +296,6 @@ int shiika_num_to_str_f( void ){
 		}
 
 		// 各文字の決定
-		str_is_short = false;
 		for( i=0; i<NUM_OF_CHAR; i++ ){
 			mpz_mod( mp_ka, mp_number, mp_n_size );
 			mpz_tdiv_q( mp_number, mp_number, mp_n_size );
@@ -304,13 +303,21 @@ int shiika_num_to_str_f( void ){
 			if( debug_mode ){ gmp_printf( "post mp_number : %3Zd, mp_ka : %Zd, moji[ka[mp_ka]] : %s\n",				///DBG
 																	mp_ka, mp_number, moji[ka[i]] ); }				///DBG
 			if( ( mpz_get_ui( mp_number ) == 0 ) && ( ka[i] == 0 ) ){
-				str_is_short = true;
-//				printf( "Warning : 文字が短すぎます\n" );
+				printf( "Warning : 文字が短すぎます\n" );
 				for( j=i+1; j<NUM_OF_CHAR; j++ ){
 					ka[j] = 0;
 				}
 				break;
 			}
+		}
+		if( i < NUM_OF_SENRYU ){
+			output_mes = "[俳句・川柳] 字足らずです";
+		} else if( i == NUM_OF_SENRYU ){
+			output_mes = "[俳句・川柳]";
+		} else if( i <NUM_OF_CHAR ){
+			output_mes = "[短歌] 字足らずです";
+		} else {
+			output_mes = "[短歌]";
 		}
 
 		// 表示
@@ -320,16 +327,13 @@ int shiika_num_to_str_f( void ){
 		printf( "通し番号　：" );
 		gmp_printf( "%Zd\n", mp_number_bak );
 		printf( "　　　　　：%s\n", str_buffer );
+		printf( "分類　　　：%s\n", output_mes );
 		printf( "文字列　　：" );
 		for( i=0; i<NUM_OF_CHAR; i++ ){
 			printf( "%s", moji[ ka[ i ] ] );
 		}
 		printf( "\n" );
 
-		// 文字長チェック
-		if( str_is_short ){
-			printf( "Warning : 文字が短すぎます\n" );
-		}
 		// 文法チェック
 		grammar_check( ka );
 
