@@ -4,7 +4,10 @@
 #include	"moji.h"
 
 // Define
-#define	NUM_OF_CHAR			31
+#define	NUM_OF_HAIKU		31
+#define	NUM_OF_SENRYU		17
+#define	NUM_OF_CHAR			NUM_OF_HAIKU
+
 #define	BUFFER_SIZE			2048
 
 #define	SHIIKA_MODE_EXIT	0

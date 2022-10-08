@@ -141,6 +141,7 @@ int shiika_str_to_num_f( void ){
 	int		i, j;
 	int		len;
 	bool	hit;
+	char	*input_mes;
 
 	printf( "【通し番号検索】\n");
 	do{
@@ -153,7 +154,7 @@ int shiika_str_to_num_f( void ){
 		p = input_buffer;
 		for( i=0; i<NUM_OF_CHAR; i++ ){
 			if( *p == '\n' ){
-				printf( "Warning : 文字が短すぎます（字足らずで処理します）\n" );
+				// 字足らず
 				for( j=i; j<NUM_OF_CHAR; j++ ){
 					ka[j] = 0;
 				}
@@ -177,6 +178,15 @@ int shiika_str_to_num_f( void ){
 				printf( "Error : 不適格な文字が含まれています\n\n" );
 				return -1;
 			}
+		}
+		if( i < NUM_OF_SENRYU ){
+			input_mes = "[俳句・川柳] 文字が短すぎます（字足らずで処理します）";
+		} else if( i == NUM_OF_SENRYU ){
+			input_mes = "[俳句・川柳]";
+		} else if( i <NUM_OF_CHAR ){
+			input_mes = "[短歌] 文字が短すぎます（字足らずで処理します）";
+		} else {
+			input_mes = "[短歌]";
 		}
 		if( *p != '\n' ){
 			printf( "Warning : 文字が長すぎます（切り捨てて処理します）\n" );
@@ -219,6 +229,7 @@ int shiika_str_to_num_f( void ){
 			printf( "%s", moji[ ka[ i ] ] );
 		}
 		printf( "\n" );
+		printf( "分類　　　：%s\n", input_mes );
 		mpz_get_str( input_buffer, 10, mp_number );
 		convert_num_unit( input_buffer, str_buffer );
 		printf( "通し番号　：" );
