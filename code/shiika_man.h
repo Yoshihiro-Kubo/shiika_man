@@ -4,7 +4,7 @@
 #include	"moji.h"
 
 // Define
-#define	NUM_OF_CHAR	17
+#define	NUM_OF_CHAR	31
 #define	BUFFER_SIZE	2048
 
 #define	SENRYU_MODE_EXIT	0
