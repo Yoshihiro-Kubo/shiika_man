@@ -2,4 +2,4 @@
 
 bash
 mount_uvw
-cd /mnt/v/DATA/Concept_Art/0010_川柳ジェネレータ（仮）/code
+cd /mnt/v/DATA/Concept_Art/0011_詩歌マネージャ/code

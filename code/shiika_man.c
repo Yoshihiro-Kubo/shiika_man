@@ -10,7 +10,7 @@
 #include	<string.h>
 #include	<gmp.h>
 
-#include	"senryu_man.h"
+#include	"shiika_man.h"
 
 char	input_buffer[ BUFFER_SIZE ];	// 入力バッファ
 char	str_buffer[ BUFFER_SIZE ];		// 表示用文字バッファ

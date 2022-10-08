@@ -1,5 +1,5 @@
 ﻿
-haiku_man	[-d]
+shiika_man	[-d]
 
 オプション
 	-d	デバッグモード
