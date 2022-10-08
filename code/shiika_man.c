@@ -16,7 +16,7 @@ char	input_buffer[ BUFFER_SIZE ];	// 入力バッファ
 char	str_buffer[ BUFFER_SIZE ];		// 表示用文字バッファ
 int		ka[ NUM_OF_CHAR ];				// 歌の配列
 
-int senryu_start_menu( void ){
+int shiika_start_menu( void ){
 	int		input_num;
 
 	do{
@@ -32,7 +32,7 @@ int senryu_start_menu( void ){
 	return input_num;
 }
 
-int senryu_end_menu( void ){
+int shiika_end_menu( void ){
 		printf( "\n" );
 		printf( "\t<Enter> : 継続\n" );
 		printf( "\t0       : 終了（メニュー）\n" );
@@ -127,7 +127,7 @@ int	convert_num_unit( char *input_str, char *output_str ){
 	return 0;
 }
 
-int senryu_str_to_num_f( void ){
+int shiika_str_to_num_f( void ){
 	// 文字列入力
 	// エラーチェック
 	// 文字列→番号変換
@@ -231,14 +231,14 @@ int senryu_str_to_num_f( void ){
 		mpz_clear( mp_n_size );
 
 		// 継続・終了メニュー
-		input_num = senryu_end_menu();
+		input_num = shiika_end_menu();
 
 	} while( ( input_num == 0 ) && ( *input_buffer != '0' ) );		// 空打ちのとき true、継続。　本当に 0 入力時 false。
 																	// ★ この部分は後で見直す。
 }
 
 
-int senryu_num_to_str_f( void ){
+int shiika_num_to_str_f( void ){
 	// 番号入力
 	// エラーチェック(?)
 	// 剰余の計算による、各文字の決定
@@ -328,13 +328,13 @@ int senryu_num_to_str_f( void ){
 		mpz_clear( mp_n_size );
 
 		// 継続・終了メニュー
-		input_num = senryu_end_menu();
+		input_num = shiika_end_menu();
 
 	} while( ( input_num == 0 ) && ( *input_buffer != '0' ) );		// 空打ちのとき true、継続。　本当に 0 入力時 false。
 }
 
 
-void senryu_help_f( void ){
+void shiika_help_f( void ){
 }
 
 int main( int argc, char*argv[] ){
@@ -361,16 +361,16 @@ int main( int argc, char*argv[] ){
 	}
 
 	do{
-		mode = senryu_start_menu();
+		mode = shiika_start_menu();
 		switch( mode ){
 		case SHIIKA_MODE_S2N:
-			senryu_str_to_num_f();
+			shiika_str_to_num_f();
 			break;
 		case SHIIKA_MODE_N2S:
-			senryu_num_to_str_f();
+			shiika_num_to_str_f();
 			break;
 		case SHIIKA_MODE_HELP:
-			senryu_help_f();
+			shiika_help_f();
 			break;
 		case SHIIKA_MODE_EXIT:
 			break;
