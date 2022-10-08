@@ -4,14 +4,14 @@
 #include	"moji.h"
 
 // Define
-#define	NUM_OF_CHAR	31
-#define	BUFFER_SIZE	2048
+#define	NUM_OF_CHAR			31
+#define	BUFFER_SIZE			2048
 
 #define	SHIIKA_MODE_EXIT	0
-#define	SHIIKA_MODE_S2N	1
-#define	SHIIKA_MODE_N2S	2
+#define	SHIIKA_MODE_S2N		1
+#define	SHIIKA_MODE_N2S		2
 #define	SHIIKA_MODE_HELP	3
-#define	SHIIKA_MODE_MAX	4
+#define	SHIIKA_MODE_MAX		4
 
 // 文法チェック
 #define	GRM_OK				 0
