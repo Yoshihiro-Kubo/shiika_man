@@ -276,6 +276,7 @@ int shiika_num_to_str_f( void ){
 
 		mpz_init( mp_number );
 		mpz_init( mp_number_bak );
+		mpz_init( mp_number_max );
 		mpz_init( mp_n_size );
 		mpz_init( mp_ka );
 		mpz_set_si( mp_n_size, n_size );
