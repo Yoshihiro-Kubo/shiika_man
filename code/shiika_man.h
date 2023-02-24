@@ -5,6 +5,7 @@
 
 // Define
 #define	NUM_OF_HAIKU		31
+#define	NUM_OF_DODOITSU		26
 #define	NUM_OF_SENRYU		17
 #define	NUM_OF_CHAR			NUM_OF_HAIKU
 

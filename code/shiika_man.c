@@ -183,6 +183,10 @@ int shiika_str_to_num_f( void ){
 			input_mes = "[俳句・川柳] 文字が短すぎます（字足らずで処理します）";
 		} else if( i == NUM_OF_SENRYU ){
 			input_mes = "[俳句・川柳]";
+		} else if( i <NUM_OF_DODOITSU ){
+			input_mes = "[都々逸] 文字が短すぎます（字足らずで処理します）";
+		} else if( i == NUM_OF_DODOITSU ){
+			input_mes = "[都々逸]";
 		} else if( i <NUM_OF_CHAR ){
 			input_mes = "[短歌] 文字が短すぎます（字足らずで処理します）";
 		} else {
@@ -315,6 +319,10 @@ int shiika_num_to_str_f( void ){
 			output_mes = "[俳句・川柳] 字足らずです";
 		} else if( i == NUM_OF_SENRYU ){
 			output_mes = "[俳句・川柳]";
+		} else if( i <NUM_OF_DODOITSU ){
+			output_mes = "[都々逸] 文字が短すぎます（字足らずで処理します）";
+		} else if( i == NUM_OF_DODOITSU ){
+			output_mes = "[都々逸]";
 		} else if( i <NUM_OF_CHAR ){
 			output_mes = "[短歌] 字足らずです";
 		} else {
