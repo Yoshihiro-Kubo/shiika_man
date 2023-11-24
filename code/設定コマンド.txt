@@ -1,5 +1,5 @@
-¡ ƒRƒ}ƒ“ƒhƒvƒƒ“ƒvƒg‚©‚çAˆÈ‰º‚ÌƒRƒ}ƒ“ƒh‚ðŽÀs‚µ‚ÄŠÂ‹«Ý’è
+â–  ã‚³ãƒžãƒ³ãƒ‰ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã‹ã‚‰ã€ä»¥ä¸‹ã®ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã—ã¦ç’°å¢ƒè¨­å®š
 
 bash
 mount_uvw
-cd /mnt/v/DATA/Concept_Art/0011_Ž‰Ìƒ}ƒl[ƒWƒƒ/code
+cd /mnt/v/DATA/Concept_Art/0011_è©©æ­Œãƒžãƒãƒ¼ã‚¸ãƒ£/code
