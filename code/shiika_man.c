@@ -1,5 +1,5 @@
 ﻿/*
-	Copyright (C) 2022  Hajime Yamaguchi 
+	Copyright (C) 2022,2023,2024  Hajime Yamaguchi 
 */
 
 #include	<stdio.h>
@@ -308,7 +308,6 @@ int shiika_num_to_str_f( void ){
 			if( debug_mode ){ gmp_printf( "post mp_number : %3Zd, mp_ka : %Zd, moji[ka[mp_ka]] : %s\n",				///DBG
 																	mp_ka, mp_number, moji[ka[i]] ); }				///DBG
 			if( ( mpz_get_ui( mp_number ) == 0 ) && ( ka[i] == 0 ) ){
-				printf( "Warning : 文字が短すぎます\n" );
 				for( j=i+1; j<NUM_OF_CHAR; j++ ){
 					ka[j] = 0;
 				}
