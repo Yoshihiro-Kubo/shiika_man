@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024  Hajime Yamaguchi
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #ifndef	_MOJI_H_
 #define	_MOJI_H_
 
