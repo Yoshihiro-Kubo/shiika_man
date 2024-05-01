@@ -1,4 +1,4 @@
-﻿// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024  Hajime Yamaguchi
+// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024  Hajime Yamaguchi
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include	<stdio.h>
