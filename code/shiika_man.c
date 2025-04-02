@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024  Hajime Yamaguchi
+// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024,2025  Hajime Yamaguchi
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include	<stdio.h>
@@ -19,7 +19,7 @@ int shiika_start_menu( void ){
 	int		input_num;
 
 	do{
-		printf( "■ 詩歌マネージャ\n" );
+		printf( "■ 詩歌マネージャ  Version %s\n", VERSION );
 		printf( "\t%d : 通し番号検索（文字列を入力して番号を検索）\n", SHIIKA_MODE_S2N  );
 		printf( "\t%d : 文字列　検索（番号を入力して文字列を検索）\n", SHIIKA_MODE_N2S  );
 		printf( "\t%d : 使い方説明\n"                                , SHIIKA_MODE_HELP );

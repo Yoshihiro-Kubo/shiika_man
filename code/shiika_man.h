@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024  Hajime Yamaguchi
+// SPDX-FileCopyrightText: Copyright (C) 2022,2023,2024,2025  Hajime Yamaguchi
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #ifndef _SHIIKA_MAN_H_
@@ -7,6 +7,8 @@
 #include	"moji.h"
 
 // Define
+#define	VERSION			"1.00"			/* バージョン番号	*/
+
 #define	NUM_OF_HAIKU		31
 #define	NUM_OF_DODOITSU		26
 #define	NUM_OF_SENRYU		17
